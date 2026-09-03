@@ -1,10 +1,2 @@
-array = [4, [5, 6], [3, [6]], 5]
-
-def transformer_imprequee(array, cle):
-    new_list = []
-    for element in array:
-        if isinstance(element, list):
-            new_list.append( transformer_imprequee(element, cle))
-        else:
-            new_list.append(cle(element))
-    return new_list
+def fusionner_dictionnaire(dict1, dict2, func):
+    return { k: func(dict1[k], dict2[k]) if k in dict1 and k in dict2 else dict1.get(k, dict2.get(k)) for k in dict1.keys() | dict2.keys() }
